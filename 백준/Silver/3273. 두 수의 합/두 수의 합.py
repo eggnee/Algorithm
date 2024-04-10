@@ -1,19 +1,14 @@
 import sys
 input = sys.stdin.readline
 
-answer = 0
 n = int(input())
-num = []
-
-for i in list(map(int, input().split())):
-    num.append(i)
-num.sort()
+num = sorted(list(map(int, input().split())))
 
 x = int(input())
-a = 0
-b = n-1
+a, b = 0, n-1
+answer = 0
 
-while(True):
+while(a<b):
     hap = num[a] + num[b]
     if hap == x:
         answer += 1
@@ -23,7 +18,5 @@ while(True):
         a += 1
     else:
         b -= 1
-    if a >= b:
-        break
 
 print(answer)
