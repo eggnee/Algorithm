@@ -1,13 +1,14 @@
-import sys
-
-k = int(input())
-stack = []
-for i in range(k):
-    num = int(sys.stdin.readline().strip())
-    if num == 0:
-        if stack:
-            stack.pop()
+K = int(input()) #반복 횟수 입력
+numList = []
+for i in range(0, K):
+    num = input()
+    if num == "0":
+        numList.pop(-1)
     else:
-        stack.append(num)
+        numList.append(num)
 
-print(sum(stack))
+hap = 0
+for i in numList:
+    hap += int(i)
+
+print(hap)
