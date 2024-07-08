@@ -1,0 +1,12 @@
+import sys
+limit_number = 15000
+sys.setrecursionlimit(limit_number)
+
+n = int(input())
+
+def fibonacci(num):
+    if num < 2:
+        return num
+    return fibonacci(num-1) + fibonacci(num-2)
+    
+print(fibonacci(n))
