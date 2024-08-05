@@ -28,9 +28,6 @@ def cal(numList, operList, result):
         else:
             result = result // newNumList.pop(0)
     
-    #print(maxNum, minNum, result)
-    #print(newNumList)
-    
     cal(newNumList, operList, result)
 
 N = int(input())
@@ -45,15 +42,12 @@ for i in range(4):
     for j in range(operInput.pop(0)):
         operList.append(basicOper[i])
 
-operIterList = itertools.permutations(operList, N-1)
+operIterList = list(set(itertools.permutations(operList, N-1)))
 
-num = numList[0]
-littleNumList = numList
-littleNumList.pop(0)
+num = numList.pop(0)
 
 for i in operIterList:
-    #print(i)
-    cal(littleNumList, list(i), num)
+    cal(numList, list(i), num)
 
 print(maxNum)
 print(minNum)
