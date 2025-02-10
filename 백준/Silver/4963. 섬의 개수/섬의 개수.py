@@ -2,35 +2,34 @@ import sys
 limit_number = 15000
 sys.setrecursionlimit(limit_number)
 
-route = [[0, 1], [1, 0], [1, 1], [1, -1], [-1, 1], [-1, 0], [-1, -1], [0, -1]]
+maps = []
+case = [(0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (1, -1), (-1, 1), (-1, -1)]
+w, h = map(int, input().split())
 
-def dfs(visited, i, j):
-    if visited[i][j] == 0 and arr[i][j] == 1:
-        visited[i][j] = 1
-        for k in route:
-            if 0 <= i+k[0] and i+k[0] < h and 0 <= j+k[1] and j+k[1] < w:
-                dfs(visited, i+k[0], j+k[1])
-            
-            
+def dfs(i, j):
+    if 0 <= i < h and 0 <= j < w:
+        if maps[i][j] == 1:
+            maps[i][j] = 0
+            for c in case:
+                dfs(i+c[0], j+c[1])
+    
+
 while True:
-    w, h = map(int, input().split())
     if w == 0 and h == 0:
         break
     
-    answer = 0
-    visited = [[0] * w for _ in range(h)]
+    for _ in range(h):
+        maps.append(list(map(int, input().split())))
     
-    arr = []
-    for i in range(h):
-        arr.append(list(map(int, input().split())))
-    
+    num = 0
     for i in range(h):
         for j in range(w):
-            if visited[i][j] == 0 and arr[i][j] == 1:
-                answer += 1
-                dfs(visited, i, j)
-    print(answer)
-
-
-
+            if maps[i][j] == 1:
+                num += 1
+                dfs(i, j)
+    print(num)
     
+    w, h = map(int, input().split())
+    maps = []
+
+
