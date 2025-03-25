@@ -22,8 +22,9 @@ answer = 0
 
 for temp in shops:
     d = temp[0]
+    
     if d + dongun[0] == 3 or d + dongun[0] == 7: # 맞은편의 경우
-        if d == 1 or 2:
+        if d in [1, 2]:
             case1, case2 = 0, 0
             case1 = temp[1][0] + temp[1][1] + dongun[1][1] + dongun[1][0]
             case2 = temp[1][0] + (column-temp[1][1]) + dongun[1][0] + (column-dongun[1][1])
@@ -37,8 +38,6 @@ for temp in shops:
     else:
         for i in range(2):
             answer += abs(temp[1][i] - dongun[1][i])
-    #print(temp, answer)
-    
 
 print(answer)
 
