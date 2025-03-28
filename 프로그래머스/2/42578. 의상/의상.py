@@ -1,13 +1,13 @@
 def solution(clothes):
     answer = 1
     map = dict()
-    for c in clothes:
-        if c[1] in map:
-            map[c[1]].append(c[0])
+    for _, t in clothes:
+        if t in map:
+            map[t] += 1
         else:
-            map[c[1]] = [c[0]]
+            map[t] = 2
     
-    for key in map:
-        answer *= len(map[key]) + 1
+    for value in map.values():
+        answer *= value
     
     return answer - 1
