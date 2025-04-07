@@ -22,12 +22,9 @@ def dfs(i, j, index):
 for i in range(N):
     for j in range(N):
         if arr[i][j] == 1:
-            home_num.append(1)            
+            home_num.append(0)            
             sum_num += 1
-            arr[i][j] = 0
-            
-            for d in dir:
-                dfs(i+d[0], j+d[1], len(home_num) - 1)
+            dfs(i, j, len(home_num) - 1)
         
 
 print(sum_num)
