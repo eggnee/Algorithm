@@ -6,7 +6,6 @@ def solution(n, lost, reserve):
         if i in newLost:
             if i-1 in newReserve:
                 answer += 1
-                reserve.remove(i-1)
             elif i+1 in newReserve:
                 answer += 1
                 newReserve.remove(i+1)
